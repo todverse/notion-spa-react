@@ -9,23 +9,28 @@ interface Dat {
     address?: Address,
     phone?:number,
     website?:string,
-
 }
+
 interface Address {
     city?:string,
     street?:string,
     zipcode?:number,
 }
+
 interface Props {
     dat? : Dat,
 }
+
+
 class Page extends React.Component<Props> {
     public change =()=> {
         let inputs = document.getElementsByTagName('input');
         let textarea = document.getElementsByTagName('textarea')[0];
         let submit = document.getElementsByClassName('submit')[0];
+
         submit.removeAttribute('disabled')
         textarea.removeAttribute('readonly')
+
         for(let i = 0; i < inputs.length; i++) {
             if(inputs[i].hasAttribute('readonly')) {
                 inputs[i].removeAttribute('readonly')
@@ -33,18 +38,22 @@ class Page extends React.Component<Props> {
             }
         }
     }
+
     public componentDidMount() {
         let inputs = document.getElementsByTagName('input');
         let textarea = document.getElementsByTagName('textarea')[0];
         let submit = document.getElementsByClassName('submit')[0];
+
         submit.setAttribute('disabled', 'true')
         textarea.setAttribute('readonly', 'true')
+
         for(let i = 0; i < inputs.length; i++) {
             if(!inputs[i].hasAttribute('readonly')) {
                 inputs[i].setAttribute('readonly', 'true')
             }
         }
     }
+
     public sendData =()=> {
         let inputs = document.getElementsByTagName('input');
         let obj = {
@@ -59,15 +68,21 @@ class Page extends React.Component<Props> {
             phone:inputs[6].value,
             website:inputs[7].value,
         }
+
         let json = JSON.stringify(obj);
         console.log(json);
+
+
         document.getElementsByClassName('prof')[0]?.setAttribute('style', 'display:none')
         document.getElementsByClassName('menuProf')[0]?.setAttribute('style', 'display:flex')
     }
+
     public validateInputs = () => {
         let inputs = document.getElementsByTagName('input');
         let submit = document.getElementsByClassName('submit')[0];
         let count = 0;
+
+
         for(let i =0; i < inputs.length; i++) {
             if(inputs[i].type === 'email' && !inputs[i].value.includes('@') || inputs[i].type === 'email' && inputs[i].value === '') {
                 inputs[i].setAttribute('style', 'border: 1px solid red; color: black;')
@@ -76,6 +91,8 @@ class Page extends React.Component<Props> {
             } else if(inputs[i].type === 'email') {
                 inputs[i].setAttribute('style', 'border: 1px solid rgb(216,216,216); color: black;')
             } 
+
+
             if(inputs[i].type === 'url' && !inputs[i].value.includes('.') || inputs[i].type === 'url' && inputs[i].value === '') {
                 inputs[i].setAttribute('style', 'border: 1px solid red; color: black;')
                 submit.setAttribute('disabled', 'true');
@@ -83,7 +100,10 @@ class Page extends React.Component<Props> {
             } else if(inputs[i].type === 'url') {
                 inputs[i].setAttribute('style', 'border: 1px solid rgb(216,216,216); color: black;')
             }
+
+
             let tel;
+
             if(inputs[i].type === 'tel') {
                 tel = inputs[i].value.split(' ');
                 tel = tel.join('');
@@ -100,6 +120,8 @@ class Page extends React.Component<Props> {
                 tel = tel.split('.');
                 tel = tel.join('');
             }
+
+
             if(inputs[i].type === 'tel' && isNaN(Number(tel))  || inputs[i].type === 'tel' && inputs[i].value === '') {
                 inputs[i].setAttribute('style', 'border: 1px solid red; color: black;')
                 submit.setAttribute('disabled', 'true');
@@ -107,6 +129,8 @@ class Page extends React.Component<Props> {
             } else if(inputs[i].type === 'tel') {
                 inputs[i].setAttribute('style', 'border: 1px solid rgb(216,216,216); color: black;')
             }
+
+
             if(inputs[i].type === 'text' && inputs[i].value === '') {
                 inputs[i].setAttribute('style', 'border: 1px solid red; color: black;')
                 submit.setAttribute('disabled', 'true');
@@ -114,14 +138,18 @@ class Page extends React.Component<Props> {
             } else if(inputs[i].type === 'text') {
                 inputs[i].setAttribute('style', 'border: 1px solid rgb(216,216,216); color: black;')
             }
+
+
             if(inputs[i].getAttribute('style') === 'border: 1px solid rgb(216,216,216); color: black;'){
                 count++;
             }
+
             if(count === 8) {
                 submit.removeAttribute('disabled');
             }
         }
     }
+    
     public render() {
         return(
             <div className='page'>

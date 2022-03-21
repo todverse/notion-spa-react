@@ -6,6 +6,7 @@ interface IProps {
     type: string,
     sortC : React.MouseEventHandler<HTMLButtonElement>,
 }
+
 interface Props {
     sortCity : React.MouseEventHandler<HTMLButtonElement>,
     sortCompany : React.MouseEventHandler<HTMLButtonElement>,

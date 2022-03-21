@@ -32,11 +32,14 @@ class Profile extends React.Component<Props> {
     public saveProfile = (event: { target: any }) => {
         let arr = Array.from(document.getElementsByClassName('btn_page'))
         this.props.saveProfile(this.props.data[arr.indexOf(event.target)])
+
         document.getElementsByClassName('prof')[0]?.setAttribute('style', 'display:flex')
         document.getElementsByClassName('menuProf')[0]?.setAttribute('style', 'display:none')
     }
+
     public render() {
         let profiles = [];
+
         for(let i = 0; i < this.props.data.length; i++) profiles.push(
             <div className="profile">
                 <p className='FIO'>
@@ -51,6 +54,7 @@ class Profile extends React.Component<Props> {
                 <a onClick={this.saveProfile}  className='btn_page'>Подробнее</a>
             </div>
         )
+
         return(
             profiles
         )
@@ -63,16 +67,20 @@ class ProfList extends React.Component<IState> {
         data: [],
         saveProfile: () => {},
     }
+
     public componentDidMount() {
         let users = fetch('https://jsonplaceholder.typicode.com/users')
         .then((res) => res.json())
         .then((res) => {
         this.setState({data: res})
+
         document.getElementsByClassName('loader')[0].setAttribute('style', 'display:none')
         })
     }
+
     public sortByCity = () => {
         let arr = this.state.data;
+
         arr.sort((a, b) => {
             if(a.address.city < b.address.city) {
                 return -1
@@ -81,12 +89,15 @@ class ProfList extends React.Component<IState> {
             }
             return 1
         })
+
         this.setState({
             data: arr,
         })
     }
+
     public sortByCompany = () => {
         let arr = this.state.data;
+
         arr.sort((a, b) => {
             if(a.company.name < b.company.name) {
                 return -1
@@ -95,15 +106,19 @@ class ProfList extends React.Component<IState> {
             }
             return 1
         })
+
         this.setState({
             data: arr,
         })
     }
+
     dat!: {}
+
     public saveProfile = (dat: Object) => {
         this.dat = dat
         this.props.saveProfile(this.dat)
     }
+    
     public render() { 
         return( 
             <div className='menuProf'>

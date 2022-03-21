@@ -8,8 +8,10 @@ import './assets/scss/index.scss'
 
 class App extends React.Component {
     dat!: Object
+
     public saveProfile = (dat:Object) => {
         this.dat = dat;
+        
         ReactDOM.render(
             <React.StrictMode>
                 <App />
@@ -17,9 +19,11 @@ class App extends React.Component {
             document.getElementById('root')
         )
     }
+
     public componentDidMount() {
         document.getElementsByClassName('prof')[0]?.setAttribute('style', 'display:none')
     }
+
     public render() {
         return (
             <div className='app'>
