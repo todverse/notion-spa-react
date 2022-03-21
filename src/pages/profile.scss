@@ -1,0 +1,68 @@
+.prof {
+    width: 665px;
+    min-height: 300px;
+    margin: auto;
+    display: flex;
+}
+.page {
+    width: 513px;
+    padding-left: 36px;
+    h3 {
+        padding-top: 19px;
+        padding-bottom: 16px;
+        width: 250px;
+    }
+    form {
+        width: 438px;
+        height: 548px;
+        padding-left: 12px;
+        border: 1px solid rgba(243, 243, 243, 1);
+        border-radius: 5px;
+    }
+    input {
+        margin-bottom: 12px;
+        width: 211px;
+        height: 23px;
+        border: 1px solid rgba(216, 216, 216, 1);
+        border-radius: 5px;
+        color: rgba(216, 216, 216, 1);
+    }
+    input.submit {
+        width: 85px;
+        height: 25px;
+        color: white;
+        background-color: rgba(82, 207, 79, 1);
+        border-radius: 5px;
+        float: right;
+        margin-right: 10%;
+    }
+    input.submit:hover {
+        background-color: rgb(42, 110, 41);
+    }
+    input.submit:disabled {
+        background-color: rgba(175, 175, 175, 1);
+    }
+    textarea {
+        width: 90%;
+        height: 55px;
+        resize: none;
+        border: 1px solid rgba(216, 216, 216, 1);
+        border-radius: 5px;
+    }
+}
+.change {
+    width: 117px;
+    height: 27px;
+    position: relative;
+    top: -40px;
+    left: 320px;
+    background-color: rgba(75, 81, 239, 1);
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+.change:hover {
+    cursor: pointer;
+    background-color: rgb(125, 129, 243);
+    color: rgb(121, 121, 121);
+}
